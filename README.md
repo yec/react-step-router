@@ -116,7 +116,7 @@ function App() {
 ```
 
 Step router inspired by react router 6. No form handling or ui included. 
-The only responsibility is registering steps and step, step are allowed to be nested. Only leaf step node are show. i.e. Step with children step are not rendered. As a leaf step is marked completed the next step will be viewable currently configured such that as a step at depth 0 is complete it will show the next step and the completed step is not shown. Step with depth 1 with show completed steps with the same root step. e.g. Completed step of [1,1] will also show [1,0].
+The only responsibility is registering steps and step, step are allowed to be nested. Only leaf step node are visitable. i.e. Step with children step are not able to be visited though they will be rendered as part of the activeStep hierarchy. As a leaf step is marked completed the next step will be viewable currently configured such that as a step at depth 0 is complete it will show the next step and the completed step is not shown. Step with depth 1 with show completed steps with the same root step. e.g. Completed step of [1,1] will also show [1,0].
 
 Prop highestStep allows you to have activeStep of [1,1] but also have step [1,2] visible if you have completed that step before. This will be useful when viewing completed steps or saving the state.
 
@@ -125,16 +125,4 @@ Hook useSetStepHandler is used to set the onClick of a submit button. What this 
 The connect component can be used to render a navbar for instance.
 ```
 <ConnectStepRouter>{({ steps }) => <Nav steps={steps} />}</ConnectStepRouter>
-```
-
-```
-<StepRouter>
-  <Steps>
-    <Step name="step 1" element={<Outlet />}>
-      <Step element={<div>step 1.1</div>} />
-      <Step element={<div>step 1.2</div>} />
-    </Step>
-    <Step name="step 2" />
-  </Steps>
-</StepRouter>
 ```
