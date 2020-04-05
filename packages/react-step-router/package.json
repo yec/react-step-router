@@ -1,0 +1,71 @@
+{
+  "private": true,
+  "name": "react-step-router",
+  "version": "1.0.0",
+  "description": "Declarative step routing for React",
+  "main": "dist/react-step-router.js",
+  "module": "dist/react-step-router.es.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build:modern": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yec/react-step-router.git"
+  },
+  "author": "yec",
+  "license": "MIT",
+  "dependencies": {
+    "history": "^4.10.1",
+    "lodash": "^4.17.15",
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/runtime-corejs3": "^7.8.7",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@testing-library/react": "^10.0.1",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@types/history": "^4.7.5",
+    "@types/jest": "^25.1.4",
+    "@types/lodash": "^4.14.149",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-test-renderer": "^16.9.2",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "bundlesize": "^0.18.0",
+    "core-js": "^3.6.4",
+    "coveralls": "^3.0.9",
+    "cypress": "^4.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "husky": "^4.2.3",
+    "jest": "^25.2.7",
+    "lint-staged": "^10.0.8",
+    "mutationobserver-shim": "^0.3.3",
+    "prettier": "^1.19.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-test-renderer": "^16.13.0",
+    "rollup": "^2.0.6",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/react-step-router"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/yec/react-step-router/issues"
+  },
+  "homepage": "https://github.com/yec/react-step-router#readme"
+}
