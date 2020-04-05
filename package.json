@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yec/react-step-router.git"
+  },
+  "author": "yec",
+  "license": "MIT",
+  "devDependencies": {},
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/yec/react-step-router/issues"
+  },
+  "homepage": "https://github.com/yec/react-step-router#readme"
+}
