@@ -22,90 +22,82 @@ function App() {
         highestStep={highestStep}
         completedSteps={completedSteps}
       >
+        <Steps>
+          <Step
+            name="Introduction"
+            element={<div>Welcome to react step router.</div>}
+          />
+          <Step
+            name="Step 2"
+            element={<div>Hi this is the second step.</div>}
+          />
+          <Step
+            name="Nested step"
+            element={
+              <div>
+                This is a nested step.
+                <Outlet />
+              </div>
+            }
+          >
+            <Step name="Nested 1" element={<div>Nested step 1</div>} />
+            <Step name="Nested 2" element={<div>Nested step 2</div>} />
+          </Step>
+          <Step
+            name="Branch step"
+            element={
+              <div>
+                <div>Branch step. Choose A or B and continue.</div>
+                <div>
+                  <input
+                    name="branch"
+                    defaultChecked={branch === 'a'}
+                    type="radio"
+                    id="a"
+                    onClick={() => setBranch('a')}
+                  />{' '}
+                  <label htmlFor="a">Branch A</label>
+                </div>
+                <div>
+                  <input
+                    name="branch"
+                    defaultChecked={branch === 'b'}
+                    type="radio"
+                    id="b"
+                    onClick={() => setBranch('b')}
+                  />{' '}
+                  <label htmlFor="b">Branch B</label>
+                </div>
+              </div>
+            }
+          />
+          {branch === 'a' ? (
+            <Step name="Branch A" element={<div>Branch A chosen.</div>} />
+          ) : (
+            <Step name="Branch B" element={<div>Branch B chosen.</div>} />
+          )}
+          <Step
+            name="The end"
+            element={<div>The end. Thanks for reading. :)</div>}
+          />
+        </Steps>
         <ConnectStepRouter>
           {({ currentStepRef }) => {
             return (
-              <>
-                <Steps>
-                  <Step
-                    name="Introduction"
-                    element={<div>Welcome to react step router.</div>}
-                  />
-                  <Step
-                    name="Step 2"
-                    element={<div>Hi this is the second step.</div>}
-                  />
-                  <Step
-                    name="Nested step"
-                    element={
-                      <div>
-                        This is a nested step.
-                        <Outlet />
-                      </div>
-                    }
-                  >
-                    <Step name="Nested 1" element={<div>Nested step 1</div>} />
-                    <Step name="Nested 2" element={<div>Nested step 2</div>} />
-                  </Step>
-                  <Step
-                    name="Branch step"
-                    element={
-                      <div>
-                        <div>Branch step. Choose A or B and continue.</div>
-                        <div>
-                          <input
-                            name="branch"
-                            defaultChecked={branch === 'a'}
-                            type="radio"
-                            id="a"
-                            onClick={() => setBranch('a')}
-                          />{' '}
-                          <label htmlFor="a">Branch A</label>
-                        </div>
-                        <div>
-                          <input
-                            name="branch"
-                            defaultChecked={branch === 'b'}
-                            type="radio"
-                            id="b"
-                            onClick={() => setBranch('b')}
-                          />{' '}
-                          <label htmlFor="b">Branch B</label>
-                        </div>
-                      </div>
-                    }
-                  />
-                  {branch === 'a' ? (
-                    <Step
-                      name="Branch A"
-                      element={<div>Branch A chosen.</div>}
-                    />
-                  ) : (
-                    <Step
-                      name="Branch B"
-                      element={<div>Branch B chosen.</div>}
-                    />
-                  )}
-                  <Step
-                    name="The end"
-                    element={<div>The end. Thanks for reading. :)</div>}
-                  />
-                </Steps>
-                {currentStepRef.current.nextStep && (
-                  <button
-                    onClick={() => {
-                      setActiveStep(currentStepRef.current.nextStep);
-                      setHighestStep(currentStepRef.current.nextStep);
-                      setCompletedSteps([
-                        ...completedSteps,
-                        currentStepRef.current.nextStep,
-                      ]);
-                    }}
-                  >
-                    Continue
-                  </button>
-                )}
-              </>
+              currentStepRef.current.nextStep && (
+                <button
+                  onClick={() => {
+                    setActiveStep(currentStepRef.current.nextStep);
+                    setHighestStep(currentStepRef.current.nextStep);
+                    setCompletedSteps([
+                      ...completedSteps,
+                      currentStepRef.current.nextStep,
+                    ]);
+                  }}
+                >
+                  Continue
+                </button>
+              )
             );
           }}
         </ConnectStepRouter>
