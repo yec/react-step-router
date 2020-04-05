@@ -47,7 +47,7 @@ function App() {
                     <Step name="Nested 2" element={<div>Nested step 2</div>} />
                   </Step>
                   <Step
-                    name="Back to unnested"
+                    name="Branch step"
                     element={
                       <div>
                         <div>Branch step. Choose A or B and continue.</div>
