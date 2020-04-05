@@ -62,7 +62,12 @@ export const StepRouter = ({
     activeStep,
   ]);
 
-  const currentStepRef = React.useRef();
+  const currentStepRef = React.useRef<any>();
+
+  currentStepRef.current = {
+    currentStep: activeStep,
+    nextStep: nleaf,
+  };
 
   /**
    * set up variables for use in connect StepRouter
@@ -88,7 +93,7 @@ export const StepRouter = ({
   );
 };
 
-export function ConnectStepRouter({ children }: any) {
+export function ConnectStepRouter({ children }: any): any {
   const values = useContext(LocationContext);
   return children(values);
 }
@@ -185,7 +190,10 @@ export function useHighestStep() {
   return React.useContext(LocationContext).highestStep;
 }
 
-export function useStep() {
+export function useStep(): {
+  currentStep: Array<number>;
+  nextStep: Array<number>;
+} {
   const { indexes } = React.useContext(StepContext);
   const { leafSteps } = React.useContext(LocationContext);
 
