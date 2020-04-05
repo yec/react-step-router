@@ -7,8 +7,12 @@
   "module": "dist/react-step-router.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "build": "yarn build:modern && yarn build:min",
+    "build:modern": "rollup -c",
+    "build:min": "rollup -c rollup.min.config.js",
     "test": "jest",
-    "build:modern": "rollup -c"
+    "test:coverage": "jest --coverage",
+    "test:watch": "yarn test:coverage -- --watchAll"
   },
   "repository": {
     "type": "git",
