@@ -270,6 +270,7 @@ export function renderTreeTailCall(
         indexes: indexes,
         provider: (
           <StepContext.Provider
+            key={steptopath(indexes)}
             value={{
               outlet: null,
               indexes,
