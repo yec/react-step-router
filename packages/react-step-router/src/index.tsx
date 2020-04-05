@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, { useState, useEffect, useContext, useMemo } from 'react';
+import * as React from 'react';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { property, isEqual } from 'lodash';
 
@@ -42,16 +42,16 @@ export const StepRouter = ({
   // e.g. [0] is the first step.
   // [1] is the second step
   // [1,0] etc
-  // const [activeStep, setActiveStep] = useState([0]);
-  const [steps, setSteps] = useState([]);
-  const [leafSteps, setLeafSteps] = useState([]);
+  // const [activeStep, setActiveStep] = React.useState([0]);
+  const [steps, setSteps] = React.useState([]);
+  const [leafSteps, setLeafSteps] = React.useState([]);
   const historyRef = React.useRef<MemoryHistory>();
 
   if (historyRef.current == null) {
     historyRef.current = createMemoryHistory();
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (historyRef.current) {
       historyRef.current.push(`/${activeStep.join('/')}`);
     }
@@ -94,7 +94,7 @@ export const StepRouter = ({
 };
 
 export function ConnectStepRouter({ children }: any): any {
-  const values = useContext(LocationContext);
+  const values = React.useContext(LocationContext);
   return children(values);
 }
 
@@ -111,12 +111,15 @@ if (__DEV__) {
 }
 
 export function Steps({ children }: { children: any }) {
-  const { setLeafSteps, setSteps } = useContext(LocationContext);
+  const { setLeafSteps, setSteps } = React.useContext(LocationContext);
   const steps = createStepsFromChildren(children);
-  const flattenedSteps = useMemo(() => flattenSteps(steps), [steps]);
-  const leafSteps = useMemo(() => flattenedSteps.filter((step) => step[3]), []);
+  const flattenedSteps = React.useMemo(() => flattenSteps(steps), [steps]);
+  const leafSteps = React.useMemo(
+    () => flattenedSteps.filter((step) => step[3]),
+    [],
+  );
 
-  useEffect(() => {
+  React.useEffect(() => {
     setLeafSteps(leafSteps);
     setSteps(steps);
   }, []);
@@ -315,7 +318,7 @@ export function renderTreeTailCall(
 export function useSteps(flattenedSteps: Array<any>) {
   const activeStep = useActiveStep();
   const highestStep = useHighestStep();
-  const { shouldShowStep } = useContext(LocationContext);
+  const { shouldShowStep } = React.useContext(LocationContext);
 
   const root = (
     <StepContext.Provider
