@@ -154,7 +154,7 @@ export function createStepsFromChildren(children: any, path: Array<any> = []) {
     // Transparently support React.Fragment and its children.
     if (element.type === React.Fragment) {
       // eslint-disable-next-line prefer-spread
-      steps.push.apply(steps, createStepsFromChildren(childChildren));
+      steps.push.apply(steps, createStepsFromChildren(childChildren, path));
       return;
     }
 
