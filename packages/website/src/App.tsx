@@ -8,6 +8,8 @@ import {
   ConnectStepRouter,
 } from 'react-step-router';
 
+const Lazy = React.lazy(() => import('./OtherComponent'));
+
 function App() {
   const [activeStep, setActiveStep] = React.useState([0]);
   const [highestStep, setHighestStep] = React.useState([0]);
@@ -75,6 +77,15 @@ function App() {
           ) : (
             <Step name="Branch B" element={<div>Branch B chosen.</div>} />
           )}
+          <Step name="unbranch" element={<div>Unbranch</div>} />
+          <Step
+            name="lazy"
+            element={
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <Lazy />
+              </React.Suspense>
+            }
+          />
           <Step
             name="The end"
             element={<div>The end. Thanks for reading. :)</div>}
